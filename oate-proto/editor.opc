@@ -1,0 +1,80 @@
+@deadbeefdeadbeef
+
+enum Editor {
+  Insert {
+    insert_string: Text;
+  }
+
+  Move {
+    text_part: TextPart;
+    start_or_end: StartOrEnd;
+    move_direction: MoveDirection;
+  }
+
+  Delete {
+    text_part: TextPart;
+  }
+
+  Scroll {
+    num_lines: Int64;
+  }
+}
+
+enum Movement {
+  Relative {
+    text_part: TextPart;
+    start_or_end: StartOrEnd;
+    move_direction: MoveDirection;
+  }
+
+  Absolute {
+    position: Position;
+  }
+}
+
+enum TextPart {
+  Character;
+  Word;
+  Line;
+  Page;
+  Document;
+}
+
+enum StartOrEnd {
+  Start;
+  End;
+}
+
+enum MoveDirection {
+  Back;
+  Forward;
+  This;
+}
+
+enum Line {
+  FromStart {
+    offset: UInt64;
+  }
+
+  FromEnd {
+    offset: UInt64;
+  }
+
+  PercentagePoint {
+    pct: Float64;
+  }
+}
+
+struct Point {
+  offset: UInt64;
+}
+
+enum Position {
+  Line {
+    line: Line;
+  }
+
+  Point {
+    point: Point;
+  }
+}
